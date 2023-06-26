@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Finance Tracker</title>
+</head>
+<body>
+    <div class="home">
+        <div class="sidenav">
+            <div>
+                <a href="index.html">Main Dashboard</a>
+            </div>
+            <div>
+                <button class="export-btn" id="exportButton"><img src="./images/icons8-data-transfer-32.png" alt="">Export Data</button>
+            </div>
+           <div>
+            <button class="clear-btn" onclick="clearData()"><img src="./images/icons8-delete-database-32.png" alt="">Clear All Data</button>
+           </div>
+        </div>
+        <div class="main">
+            <div class="top">
+                <div>
+                    <div class="logo">
+                        <img src="./images/icons8-f-64 (1).png" alt="">
+                        <img src="./images/icons8-i-64.png" alt="">
+                        <img src="./images/icons8-n-64.png" alt="">
+                        <img src="./images/icons8-a-64 (1).png" alt="">
+                        <img src="./images/icons8-n-64.png" alt="">
+                        <img src="./images/icons8-c-64.png" alt="">
+                        <img src="./images/icons8-e-64 (1).png" alt="">
+                    </div>
+                    <div class="logo1">
+                        <img src="./images/icons8-t-64.png" alt="">
+                        <img src="./images/icons8-r-64 (1).png" alt="">
+                        <img src="./images/icons8-a-64.png" alt="">
+                        <img src="./images/icons8-c-64 (1).png" alt="">
+                        <img src="./images/icons8-k-64.png" alt="">
+                        <img src="./images/icons8-e-64.png" alt="">
+                        <img src="./images/icons8-r-64 (1).png" alt="">
+                    </div>
+                </div>
+                <div class="search">
+                    <input type="search" placeholder="Search...">
+                    <img src="./images/icons8-person-40.png" alt="user">
+                </div>
+            </div>
+            <!--start of cards-->
+            <div class="cards">
+                <div class="card">
+                    <div class="card-content">
+                        <img src="./images/icons8-bars-32.png" alt="bars">
+                        <div class="card-text">
+                            <span>Income</span>
+                            <p class="income">$</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <img src="./images/icons8-rupee-32.png" alt="rupee">
+                        <div class="card-text">
+                            <span>Spend this month</span>
+                            <p class="spend">$</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <img src="./images/icons8-balance-32.png" alt="balance">
+                        <div class="card-text">
+                            <span>Balance</span>
+                            <p class="balance">$</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <img src="./images/icons8-buy-32.png" alt="">
+                        <div class="card-text">
+                            <span>Items Bought</span>
+                            <p class="bought">$</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <img src="./images/icons8-savings-32.png" alt="">
+                        <div class="card-text">
+                            <span>Savings</span>
+                            <p class="saving">$</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end of cards-->
+            <!--start of graphs-->
+            <div class="cards">
+                <div class="charts">
+                    <div class="s">
+                        <div class="s1">
+                            <h3>Your Pie Chart</h3>
+                            <img src="./images/icons8-piechart-32.png" alt="user">
+                        </div>
+                    </div>
+                    <canvas id="pieChart"></canvas>
+                </div>
+                <div class="bars">
+                    <div class="s">
+                        <div class="s1">
+                            <h3>Monthly Comaparison</h3>
+                            <img src="./images/icons8-bars-32.png" alt="user">
+                        </div>
+                    </div>
+                    <canvas id="barChart"></canvas>
+                    <div id="balanceContainer"></div>
+                </div>
+                <div class="waves">
+                    <div class="s">
+                        <div class="s1">
+                            <h3>Wave Chart</h3>
+                            <img src="./images/icons8-graph-32.png" alt="user">
+                        </div>
+                    </div>
+                    <canvas id="waveChart"></canvas>
+                </div>
+                <div class="charts1">
+                    <div class="s">
+                        <div class="s1">
+                            <h3>Daily Comaparison</h3>
+                            <img src="./images/icons8-bars-32.png" alt="user">
+                        </div>
+                    </div>
+                    <canvas id="dailyChart"></canvas>
+                </div>
+            </div>
+            <!--end of graphs-->
+            <div id="finance-tracker">
+                <div class="transaction-form">
+                    <h2>Add Transaction</h2>
+                    <form id="transaction-form">
+                        <label for="transaction-type">Type:</label>
+                        <select id="transaction-type" required>
+                            <option value="income">Income</option>
+                            <option value="expense">Expense</option>
+                        </select>
+                        <label for="transaction-description">Description:</label>
+                        <input type="text" id="transaction-description" placeholder="e.g. Salary" required>
+                        <label for="transaction-amount">Amount:</label>
+                        <input type="number" id="transaction-amount" step="0.01" required>
+                        <button class="tran-btn" type="submit">
+                            <img src="./images/icons8-add-money-32.png" alt="">
+                            Add Transaction
+                        </button>
+                    </form>
+                </div>
+                <div class="transaction-list">
+                    <h2>Transaction List <img src="./images/icons8-transaction-list-32.png" alt="list"></h2>
+                    <table id="transaction-table">
+                      <thead>
+                        <tr>
+                          <th>Type</th>
+                          <th>Description</th>
+                          <th>Amount</th>
+                          <th>Date</th>
+                          <th>Time</th>
+                          <th>Status</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody id="transaction-list"></tbody>
+                    </table>
+                </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
