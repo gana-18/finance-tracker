@@ -333,8 +333,19 @@ document.addEventListener("DOMContentLoaded", function() {
     const description = transactionDescription.value;
     const amount = parseFloat(transactionAmount.value);
     const date = Date.now(); 
-  
+    let amount1;
+    if(type==="expense"){
+      amount1=amount;
+    }
     if (type && description && amount) {
+      const balance1=parseFloat(incomeText[0].textContent)-parseFloat(spendText[0].textContent)-amount1
+      const balance = parseFloat(balanceText[0].textContent);
+      if (balance1 < 0 || balance < 0) {
+        alert("Insufficient income/savings. Cannot add transaction.");
+        transactionDescription.value="";
+        transactionAmount.value=""
+        return; // Exit if balance is not greater than 0
+      }
       const transaction = {
         type: type,
         description: description,
